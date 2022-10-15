@@ -6,19 +6,21 @@ package Serverlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import Controller.UsuarioController;
+import javax.servlet.RequestDispatcher;
 
 /**
  *
  * @author Nico
  */
-@WebServlet(name = "Home", urlPatterns = {"/Home","/"})
-public class Home extends HttpServlet {
+@WebServlet(name = "Usuarios", urlPatterns = {"/Usuarios","/usuarios/registro"})
+public class Usuarios extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,8 +35,16 @@ public class Home extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-             RequestDispatcher view = request.getRequestDispatcher("/Pages/index.jsp");
-            view.forward(request, response);
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Usuarios</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Usuarios at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -50,7 +60,28 @@ public class Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        String parts[] = request.getRequestURI().split("/coronatickets_web/");
+        
+        switch (parts[1]) {
+            case "usuarios/registro"://registro de 
+                RequestDispatcher view = request.getRequestDispatcher("/Pages/Usuario/registroUsuario.jsp");
+                view.forward(request, response);
+            break;
+        }
+        
+        try ( PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Usuarios</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Usuarios at " + parts[1] + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     /**
@@ -64,7 +95,16 @@ public class Home extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        UsuarioController controller = new UsuarioController();
+           
+        
+        String parts[] = request.getRequestURI().split("/coronatickets_web/");
+        
+        switch (parts[1]) {
+            case "usuarios/registro"://registro de 
+                controller.registroUsuario(request, response);
+            break;
+        }
     }
 
     /**

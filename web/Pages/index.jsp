@@ -13,6 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@include file="/Pages/Common/navs.jsp" %>
         <h1>Hello World!</h1>
     </body>
 </html>
