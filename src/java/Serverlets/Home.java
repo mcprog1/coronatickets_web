@@ -12,6 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Fabrica;
+import logica.interfaz.*;
+import Clases.*;
+import java.util.List;
 
 /**
  *
@@ -19,7 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "Home", urlPatterns = {"/Home","/"})
 public class Home extends HttpServlet {
-
+    IControladorEspetaculo ICE = Fabrica.getInstance().getIControladorEspectaculo();
+    IControladorCategoria ICC = Fabrica.getInstance().getIControladorCategoria();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,13 +37,17 @@ public class Home extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        List<Categorias> categorias = (List<Categorias>) ICC.tblCategorias();
+        List<Plataformas> plataformas = (List<Plataformas>) ICE.tblPlataforma();
+        request.setAttribute("categorias", categorias);
+        request.setAttribute("plataformas", plataformas);
         try ( PrintWriter out = response.getWriter()) {
              RequestDispatcher view = request.getRequestDispatcher("/Pages/index.jsp");
             view.forward(request, response);
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -50,7 +59,18 @@ public class Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        
+        List<Categorias> categorias = (List<Categorias>) ICC.tblCategorias();
+        List<Plataformas> plataformas = (List<Plataformas>) ICE.tblPlataforma();
+        List<Espectaculo> espectaculo = (List<Espectaculo>) ICE.tblEspectaculo();
+        try ( PrintWriter out = response.getWriter()) {
+            request.setAttribute("categorias", categorias);
+            request.setAttribute("plataformas", plataformas);
+            request.setAttribute("espectaculo", espectaculo);
+            RequestDispatcher view = request.getRequestDispatcher("/Pages/index.jsp");
+            view.forward(request, response);
+        }
     }
 
     /**
