@@ -62,7 +62,7 @@ public class Usuarios extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         String parts[] = request.getRequestURI().split("/coronatickets_web/");
-        
+        request.setAttribute("error", "");
         switch (parts[1]) {
             case "usuarios/registro"://registro de 
                 RequestDispatcher view = request.getRequestDispatcher("/Pages/Usuario/registroUsuario.jsp");

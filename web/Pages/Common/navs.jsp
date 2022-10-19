@@ -7,7 +7,9 @@
 <!DOCTYPE html>
 <nav class="navbar bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand">Coronatickets</a>
+    <a href="/coronatickets_web/" class="navbar-brand">Coronatickets</a>
+
+    
     <div class="d-flex mr-2">
       <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Inicio de sesión</a>
       <a href="/coronatickets_web/usuarios/registro" class="btn" >Registro</a>

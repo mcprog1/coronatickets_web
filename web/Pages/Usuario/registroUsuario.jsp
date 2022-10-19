@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-12">
                     <%
-                    String error = (String) request.getAttribute("usuarios");
+                    String error = (String) request.getAttribute("error");
                     if (error != "") {
                     %>
                         <div class="alert alert-danger" role="alert">

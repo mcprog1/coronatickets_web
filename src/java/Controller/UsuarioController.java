@@ -93,10 +93,19 @@ public class UsuarioController {
         {
             url = request.getParameter("Registro[url]");
         }   
-
-        //Segundo paso verifico los campos obligatorios
-
-        //En el caso de que sea incompleto los campos obligatorios
+        
+        /*try ( PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. *
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Usuarios</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Usuarios at " + esArtista + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }*/
         if(nickname == null|| nombre == null || apellido == null || nacimiento == null || email == null || pwd == null || pwd2 == null || esArtista == null || (esArtista == "S" && descripcionGeneral == null))
         {
             request.setAttribute("error", "Revisa tus datos!");
