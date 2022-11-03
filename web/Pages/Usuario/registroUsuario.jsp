@@ -78,6 +78,7 @@
                         <label for="imagen_art" class="col-12 col-sm-3 col-form-label" style="text-align: start;">Imagen: <span style="color: red;">*</span></label>
                         <div class="col-12 col-sm-9">
                             <input type="file" class="form-control" id="imagen_art" placeholder="" name="Registro[imagen]">
+                            <input type="hidden" name="URLImagen" id="URLImagen">
                         </div>
                     </div>
                 </div>
@@ -234,11 +235,28 @@
                 return false;
             }
         
-        /*   if(imagen == "")
+           if(imagen != "")
             {
-                alert();
-                return false;
-            }*/
+                var fd = new FormData();
+
+                fd.append("file", $("#imagen_art")[0].files[0]);
+
+                $.ajax({
+                    url: "https://upload-image-to-imgur.vercel.app/upload",
+                    type: "POST",
+                    data: fd,
+                    async:false,
+                    success: function (data) {
+                        $("#URLImagen").val(data['data']['url']);
+                    }, error: function (a, b) {
+                        console.log(a, b);
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+
+            }
         
             if(esArtista == "S")//Si es artista entonces verifico que haga todo bien
             {
@@ -248,18 +266,6 @@
                     todoOk = "N";
                     return false;
                 }
-        /*
-                if(descripcion == "")
-                {
-                alert();
-                return false;
-                }
-        
-                if(url == "")
-                {
-                alert();
-                return false;
-                }*/
             }
         
         
