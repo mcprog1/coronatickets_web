@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import logica.Fabrica;
 import logica.interfaz.*;
 /**
@@ -35,7 +36,8 @@ public class UsuarioController {
                esArtista = "", 
                descripcionGeneral = "", 
                biografia = "", 
-               url = "";
+               url = "",
+               urlImange = "";
 
         //Primero cargo todas las varibles
 
@@ -94,6 +96,26 @@ public class UsuarioController {
             url = request.getParameter("Registro[url]");
         }   
         
+        if(request.getParameter("URLImagen") != null)
+        {
+            urlImange = request.getParameter("URLImagen");
+        }
+        
+        
+        
+        try ( PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */    
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Usuarios</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Usuarios at " + request.getParameter("URLImagen") + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+        
         /*try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. *
             out.println("<!DOCTYPE html>");
@@ -106,6 +128,9 @@ public class UsuarioController {
             out.println("</body>");
             out.println("</html>");
         }*/
+        
+        
+        
         if(nickname == null|| nombre == null || apellido == null || nacimiento == null || email == null || pwd == null || pwd2 == null || esArtista == null || (esArtista == "S" && descripcionGeneral == null))
         {
             request.setAttribute("error", "Revisa tus datos!");
@@ -118,7 +143,8 @@ public class UsuarioController {
                 RequestDispatcher view = request.getRequestDispatcher("/Pages/Usuario/registroUsuario.jsp");
                 view.forward(request, response);
             }else{
-                String creado = ICU.crearUsuario(nickname,nombre,apellido,nacimiento,email,pwd,esArtista,descripcionGeneral,biografia,url);
+                
+                String creado = ICU.crearUsuario(nickname,nombre,apellido,nacimiento,email,pwd,esArtista,descripcionGeneral,biografia,url, urlImange);
                 
                 if(creado.equals("S"))
                 {
@@ -142,6 +168,62 @@ public class UsuarioController {
         }
         
 
+    }
+    
+    
+    public void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+    {
+        String nickCorreo = request.getParameter("nick-correo");
+        String password = request.getParameter("password");
+
+            if(nickCorreo.contains("@")){
+            nickCorreo = ICU.nickUsuario(nickCorreo, password);
+        }
+        
+        int resultado = ICU.login(nickCorreo, password);
+
+         switch (resultado) {
+            case 1: {
+                HttpSession sesion = request.getSession();
+                sesion.setAttribute("nickCorreo", nickCorreo);
+                sesion.setAttribute("password", password);
+                sesion.setAttribute("tipoUsuario", 1);
+
+                request.setAttribute("tipoUsuario", 1);
+                /*RequestDispatcher view = request.getRequestDispatcher("/Pages/Usuario/IniciarSesion.jsp");
+                view.forward(request, response);*/
+                response.sendRedirect("/coronatickets_web/");
+                break;
+            }
+            case 2: {
+                HttpSession sesion = request.getSession();
+                sesion.setAttribute("nickCorreo", nickCorreo);
+                sesion.setAttribute("password", password);
+                sesion.setAttribute("tipoUsuario", 2);
+
+                request.setAttribute("tipoUsuario", 2);
+                response.sendRedirect("/coronatickets_web/");
+                /*RequestDispatcher view = request.getRequestDispatcher("/Pages/Usuario/IniciarSesion.jsp");
+                view.forward(request, response);*/
+                break;
+            }
+            default: {
+                request.setAttribute("tipoUsuario", 0);
+                RequestDispatcher view = request.getRequestDispatcher("/Pages/Usuario/IniciarSesion.jsp");
+                view.forward(request, response);
+            }
+            break;
+        }
+    }
+    
+    
+    public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+    {
+        HttpSession sesion = request.getSession();
+        sesion.invalidate();
+
+        request.setAttribute("tipoUsuario", -1);
+        response.sendRedirect("/coronatickets_web/");
     }
     
 }

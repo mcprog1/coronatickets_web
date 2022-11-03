@@ -28,13 +28,13 @@
                             <div class="card-header">
                                 Plataformas
                             </div>
-                            <ul class="list-group list-group-flush">
+                            <ul class="list-group list-group-flush" id="plataformas">
                             <%
                                 List<Plataformas> plataformas = (List<Plataformas>) request.getAttribute("plataformas");
                                 
                                for(Plataformas elemento : plataformas){
                             %>
-                                <a onclick="console.log('Holi')"><li class="list-group-item"><%=elemento.getNombre()%></li></a>
+                                <a onclick="busqueda('plat_',this.id)" id="plat_<%=elemento.getNombre()%>"><li class="list-group-item" id="<%=elemento.getNombre()%>"><%=elemento.getNombre()%></li></a>
                             <% } %>
                             </ul>
                         </div>
@@ -42,20 +42,20 @@
                             <div class="card-header">
                               Categorias
                             </div>
-                            <ul class="list-group list-group-flush">
+                            <ul class="list-group list-group-flush" id="categorias">
                             <%
                                 List<Categorias> categoria = (List<Categorias>) request.getAttribute("categorias");
                                 
                                for(Categorias element : categoria){
                             %>
-                                <a onclick="console.log('Holi')"><li class="list-group-item"><%=element.getNombre()%></li></a>
+                                <a onclick="busqueda('cat_',this.id)" id="cat_<%=element.getId()%>"><li class="list-group-item" id="<%=element.getId()%>"><%=element.getNombre()%></li></a>
                             <% } %>
                             </ul>
                         </div>
                     </div>
                     <div class="col-12 col-md-9">
                         <div class="container-fluid">
-                            <div class="row">
+                            <div class="row" id="resultadoBusqueda">
                                 <%
                                     List<Espectaculo> espectaculos = (List<Espectaculo>) request.getAttribute("espectaculo");
                                     for(Espectaculo esp: espectaculos){
@@ -66,7 +66,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title"><%=esp.getNombre()%></h5>
                                                 <p class="card-text"><%=esp.getDescripcion()%></p>
-                                                <a href="#" class="btn btn-primary">Ver mas</a>
+                                                <a href="/coronatickets_web/esoectaculos/obtenerFuncion?espectaculo=<%=esp.getNombre()%>" class="btn btn-primary">Ver funciones</a>
                                             </div>
                                         </div>
                                     </div>

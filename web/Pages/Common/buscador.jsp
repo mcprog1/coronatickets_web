@@ -10,7 +10,7 @@
     <div class="row">
         <center>
             <div class="col-12 col-md-5">
-                <form action="#" id="buscadorGlobal" name="buscadorGlobal" class="row g-3 align-items-center">
+                <form action="#" onsubmit="return false;" id="buscadorGlobal" name="buscadorGlobal" class="row g-3 align-items-center">
                     <div class="col-12 col-md-10">
                         <div class="">
                             <label for="buscador">Buscador</label>
@@ -18,7 +18,7 @@
                         </div>              
                     </div>                      
                     <div class="col-12 col-md-2">
-                        <button style="margin-top: 22px;" type="btn" class="btn btn-primary"><i class="fa-solid fa-search"></i></button>
+                        <a style="margin-top: 22px;" type="btn" class="btn btn-primary" onclick="busqueda('','')"><i class="fa-solid fa-search"></i></a>
                     </div>
                 </form>
             </div>
