@@ -5,7 +5,10 @@
 package Serverlets;
 
 import java.io.IOException;
+<<<<<<< HEAD
 import java.io.PrintWriter;
+=======
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +37,11 @@ public class Login extends HttpServlet {
         
         int resultado = ICU.login(nickCorreo, password);
         
+<<<<<<< HEAD
          switch (resultado) {
+=======
+        switch (resultado) {
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
             case 1: {
                 HttpSession sesion = request.getSession();
                 sesion.setAttribute("nickCorreo", nickCorreo);
@@ -42,7 +49,11 @@ public class Login extends HttpServlet {
                 sesion.setAttribute("tipoUsuario", 1);
 
                 request.setAttribute("tipoUsuario", 1);
+<<<<<<< HEAD
                 RequestDispatcher view = request.getRequestDispatcher("/Pages/Usuario/IniciarSesion.jsp");
+=======
+                RequestDispatcher view = request.getRequestDispatcher("/IniciarSesion.jsp");
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
                 view.forward(request, response);
                 break;
             }
@@ -53,13 +64,21 @@ public class Login extends HttpServlet {
                 sesion.setAttribute("tipoUsuario", 2);
 
                 request.setAttribute("tipoUsuario", 2);
+<<<<<<< HEAD
                 RequestDispatcher view = request.getRequestDispatcher("/Pages/Usuario/IniciarSesion.jsp");
+=======
+                RequestDispatcher view = request.getRequestDispatcher("/IniciarSesion.jsp");
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
                 view.forward(request, response);
                 break;
             }
             default: {
                 request.setAttribute("tipoUsuario", 0);
+<<<<<<< HEAD
                 RequestDispatcher view = request.getRequestDispatcher("/Pages/Usuario/IniciarSesion.jsp");
+=======
+                RequestDispatcher view = request.getRequestDispatcher("/IniciarSesion.jsp");
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
                 view.forward(request, response);
             }
             break;

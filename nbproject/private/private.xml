@@ -3,10 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Nico/Documents/NetBeansProjects/coronatickets_web/src/java/Serverlets/Buscador.java</file>
             <file>file:/C:/Users/Nico/Documents/NetBeansProjects/coronatickets_web/src/java/Controller/BuscadorController.java</file>
             <file>file:/C:/Users/Nico/Documents/NetBeansProjects/coronatickets_web/web/Pages/Common/Footer.jsp</file>
             <file>file:/C:/Users/Nico/Documents/NetBeansProjects/coronatickets_web/web/Pages/index.jsp</file>
+=======
+            <file>file:/C:/Users/Luciano/Documents/GITProyecto/coronatickets_web-master/web/ConsultaPaqueteEspectaculos.jsp</file>
+            <file>file:/C:/Users/Luciano/Documents/GITProyecto/coronatickets_web-master/web/ConsultaEspectaculo.jsp</file>
+            <file>file:/C:/Users/Luciano/Documents/GITProyecto/coronatickets_web-master/web/ConsultaEspectaculo.js</file>
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
         </group>
     </open-files>
 </project-private>

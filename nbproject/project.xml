@@ -7,6 +7,7 @@
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries>
                 <library dirs="200">
+<<<<<<< HEAD
                     <file>${reference.coronatickets.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
@@ -29,6 +30,26 @@
             </source-roots>
             <test-roots>
                 <root id="test.src.dir" name="Test Packages"/>
+=======
+                    <file>${reference.coronatickets-1.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.mysql-connector-java-8.0.30.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${reference.coronatickets.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+            </web-module-libraries>
+            <web-module-additional-libraries/>
+            <source-roots>
+                <root id="src.dir"/>
+            </source-roots>
+            <test-roots>
+                <root id="test.src.dir"/>
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
             </test-roots>
         </data>
         <references xmlns="http://www.netbeans.org/ns/ant-project-references/1">
@@ -40,6 +61,17 @@
                 <clean-target>clean</clean-target>
                 <id>jar</id>
             </reference>
+<<<<<<< HEAD
+=======
+            <reference>
+                <foreign-project>coronatickets-1</foreign-project>
+                <artifact-type>jar</artifact-type>
+                <script>build.xml</script>
+                <target>jar</target>
+                <clean-target>clean</clean-target>
+                <id>jar</id>
+            </reference>
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
         </references>
     </configuration>
 </project>

@@ -4,17 +4,21 @@
     Author     : Nico
 --%>
 
+<<<<<<< HEAD
 <%@page import="Clases.Espectaculo"%>
 <%@page import="java.util.ListIterator"%>
 <%@page import="Clases.Categorias"%>
 <%@page import="Clases.Plataformas"%>
 <%@page import="java.util.List"%>
+=======
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <%@include file="/Pages/Common/Header.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<<<<<<< HEAD
         <title>Coronatickets</title>
     </head>
     <body>
@@ -80,5 +84,11 @@
         </div>
 
         <%@include file="/Pages/Common/Footer.jsp" %>
+=======
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
     </body>
 </html>

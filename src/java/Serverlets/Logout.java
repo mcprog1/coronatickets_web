@@ -25,7 +25,11 @@ public class Logout extends HttpServlet {
             sesion.invalidate();
 
             request.setAttribute("tipoUsuario", -1);
+<<<<<<< HEAD
             RequestDispatcher view = request.getRequestDispatcher("/Pages/Usuario/IniciarSesion.jsp");
+=======
+            RequestDispatcher view = request.getRequestDispatcher("/IniciarSesion.jsp");
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
             view.forward(request, response);
         }
 

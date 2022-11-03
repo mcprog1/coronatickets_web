@@ -56,7 +56,11 @@ public class ModificarUsuario extends HttpServlet {
                     ICU.EdiarEspectador(nick, nombre, apellido, password, fecha);
                     
                     request.setAttribute("actualizado", "exito");
+<<<<<<< HEAD
                     RequestDispatcher view = request.getRequestDispatcher("/Pages/Usuario/IniciarSesion.jsp");
+=======
+                    RequestDispatcher view = request.getRequestDispatcher("/IniciarSesion.jsp");
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
                     view.forward(request, response);
                 } else {
                     
@@ -67,7 +71,11 @@ public class ModificarUsuario extends HttpServlet {
                      ICU.editarArtistas(nick, nombre, apellido, password, fecha, descripcion, URL, biografia);
                     
                     request.setAttribute("actualizado", "exito");
+<<<<<<< HEAD
                     RequestDispatcher view = request.getRequestDispatcher("/Pages/Usuario/IniciarSesion.jsp");
+=======
+                    RequestDispatcher view = request.getRequestDispatcher("/IniciarSesion.jsp");
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
                     view.forward(request, response);
                 }
             } catch (ParseException ex) {
@@ -85,7 +93,11 @@ public class ModificarUsuario extends HttpServlet {
                     request.setAttribute("fecha", infoUsuario[2]);
                     request.setAttribute("password", infoUsuario[3]);
                     request.setAttribute("tipoUsuario", 1);
+<<<<<<< HEAD
                     RequestDispatcher view = request.getRequestDispatcher("/Pages/Usuario/ModificarUsuario.jsp");
+=======
+                    RequestDispatcher view = request.getRequestDispatcher("/ModificarUsuario.jsp");
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
                     view.forward(request, response);
                     break;
                 }
@@ -101,7 +113,11 @@ public class ModificarUsuario extends HttpServlet {
                     request.setAttribute("URL", infoUsuario[5]);
                     request.setAttribute("descripcion", infoUsuario[6]);
                     sesion.setAttribute("tipoUsuario", 2);
+<<<<<<< HEAD
                     RequestDispatcher view = request.getRequestDispatcher("/Pages/Usuario/ModificarUsuario.jsp");
+=======
+                    RequestDispatcher view = request.getRequestDispatcher("/ModificarUsuario.jsp");
+>>>>>>> 8f48392469a0c346ee448012d5b492895254a5cd
                     view.forward(request, response);
                     break;
                 }
